@@ -11,6 +11,18 @@ var guessSoFar= document.getElementById("guessesSoFar");
 
 var str = "abcdefghijklmnopqrstuvwxyz";
 
+function hidePicture(){
+	document.getElementById("imageWinner").style.display="none";
+}
+//Hiding Picture
+function hidePicture(){
+	document.getElementById("imageWinner").style.display="none";
+}
+
+
+var winnerImage=function(){
+	document.getElementById("imageWinner").innerHTML='<img src="assets/images/images.jpeg" />';
+}
 var alphaArray = str.split(""); 
 
 document.onkeyup=function(event){
@@ -29,29 +41,22 @@ var computerGuess = alphaArray[Math.floor(Math.random() * alphaArray.length)];
 if (userGuess === computerGuess){
 	winCount++;
 	win.innerHTML= 'Wins: ' + winCount;
-	document.getElementById("imageWinner").innerHTML='<img src="assets/images/images.jpeg" />';
-	document.onkeyup=function(event){
-		var resetButton=event.key.toLowerCase();
-		if(resetButton === "r"){
-			location.reload();
-		}
-		else{
-			"Reload page to start again"
-		}
-	}
+	winnerImage();
+
 
  }else if(userGuess !== computerGuess){
  	soFar++;
  	guessLeft.innerHTML='Guess So Far: ' + soFar;
  	LeftOver--;
  	guessLeft.innerHTML='Guess Left: ' + LeftOver;
+ 		if(LeftOver === 0){
+		
+ 			hidePicture();
+ 	}
  }
- 	if(LeftOver === 0){
- 		
- 		location.reload();
- }
+ 
  else{
 	"You did not type anything"
 }
-
 }
+
