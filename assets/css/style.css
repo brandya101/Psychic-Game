@@ -4,5 +4,17 @@
 	text-align: center;
 }
 .game{
-	opacity:none;
+	background-color: none;
+}
+
+h1,h2{
+	font-family: 'Gloria Hallelujah', cursive;
+}
+
+h1{
+	font-size: 40px;
+}
+
+#imageWinner{
+	width:100%;
 }

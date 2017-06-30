@@ -14,9 +14,9 @@ var alphaArray=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p",
 
 
 //Hiding Picture
-function hidePicture(){
-	document.getElementById("imageWinner").style.display="none";
-}
+// function hidePicture(){
+// 	document.getElementById("imageWinner").style.display="none";
+// }
 
 //Displays Image
 var winnerImage=function(){
@@ -25,29 +25,27 @@ var winnerImage=function(){
 
 //function to return 0 and 10 to counters LeftOver and SoFar
 var resetSoFar=function(){
-	return 0;
+	soFar=0;
 }
 
 var resetLeft=function(){
-	var resetNumber
-	return resetNumber=10;
+	LeftOver=10;
 }
 
 //function for generating new number
-function randomNumber(){ 
+function randomNumber (){ 
 var computerGuess = alphaArray[Math.floor(Math.random() * alphaArray.length)];
 return computerGuess;
 }
-
-
+var computerRandom=randomNumber();
 //On letter press display the game and start guessing
 document.onkeyup=function(event){
 var userGuess=event.key.toLowerCase();
 
-//
+//displays user's guess
 document.getElementById("user").innerHTML="Your Guess: " + userGuess;
 
-var displayNumber= document.getElementById("imageLoser");
+
 //Get id's and replace with appropriate text
  win.innerHTML = 'Wins: ' + winCount;
  loss.innerHTML = 'Losses: ' + lossCount;
@@ -55,23 +53,23 @@ var displayNumber= document.getElementById("imageLoser");
  guessSoFar.innerHTML= 'Guess so far: ' + soFar;
 
 
-if(randomNumber() === userGuess){
+if(computerRandom === userGuess){
 	winCount++;
 	if(winCount===10){
 		winnerImage();
 	}
-	resetLeft();
-	resetSoFar();
 } 
-else if(randomNumber() !== userGuess){
+else if(computerRandom !== userGuess){
 	console.log("this works");
 	LeftOver--;
+	soFar++;
 	if(LeftOver === 0){
-		return LeftOver=0;
+	resetLeft();
+	resetSoFar();
+	lossCount++;
 	}
 
 }
-
 
 
 // start of an if loop to see if user guessed right letter
