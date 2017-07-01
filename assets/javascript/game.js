@@ -32,12 +32,8 @@ var resetLeft=function(){
 	LeftOver=10;
 }
 
-//function for generating new number
-function randomNumber (){ 
 var computerGuess = alphaArray[Math.floor(Math.random() * alphaArray.length)];
-return computerGuess;
-}
-var computerRandom=randomNumber();
+
 //On letter press display the game and start guessing
 document.onkeyup=function(event){
 var userGuess=event.key.toLowerCase();
@@ -53,13 +49,13 @@ document.getElementById("user").innerHTML="Your Guess: " + userGuess;
  guessSoFar.innerHTML= 'Guess so far: ' + soFar;
 
 
-if(computerRandom === userGuess){
+if(computerGuess === userGuess){
 	winCount++;
 	if(winCount===10){
 		winnerImage();
 	}
 } 
-else if(computerRandom !== userGuess){
+else if(computerGuess !== userGuess){
 	console.log("this works");
 	LeftOver--;
 	soFar++;
